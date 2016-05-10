@@ -1,0 +1,11 @@
+[host]
+bind=127.0.0.1
+
+[ports]
+http=23000
+udp=23001
+
+[commands]
+play=/opt/play.sh
+door=/opt/door.sh
+alarm=/opt/alarm.sh

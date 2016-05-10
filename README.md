@@ -12,11 +12,15 @@ You can define HTTP and UDP server settings in the config file like so:
 ```ini
 [host]
 bind=127.0.0.1
+
+[ports]
 http=23000
 udp=23001
 
 [commands]
-play/$id = /opt/play.sh $id
+play=/opt/play.sh
+door=/opt/door.sh
+alarm=/opt/alarm.sh
 ```
 
 ## HTTP
