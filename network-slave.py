@@ -106,11 +106,6 @@ def signal_handler(signal, frame):
 
 
 def execute(cmd, proto, addr):
-    # TODO Check cmd
-    #print(list(config['commands'].items()))
-    #for i in config['commands'].items():
-    #    print(i)
-
     if proto == "UDP":
         protoc = green
         pcmd = parse_cmd(cmd, split_char=';')
@@ -119,6 +114,10 @@ def execute(cmd, proto, addr):
         pcmd = parse_cmd(cmd, split_shift=1)
 
     if not pcmd:
+        return False
+
+    if not pcmd[0] in list(config['commands'].items()):
+        print('  [ %s%4s%s ] %sERROR%s: Command not whitelisted: %s' % (protoc, proto, nc, red, nc, pcmd[0]))
         return False
 
     pret = ''
