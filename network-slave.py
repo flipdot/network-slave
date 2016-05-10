@@ -116,7 +116,7 @@ def execute(cmd, proto, addr):
     if not pcmd:
         return False
 
-    if not pcmd[0] in list(config['commands'].items()):
+    if not pcmd[0] in list(x[0] for x in config['commands'].items()):
         print('  [ %s%4s%s ] %sERROR%s: Command not whitelisted: %s' % (protoc, proto, nc, red, nc, pcmd[0]))
         return False
 
