@@ -136,7 +136,9 @@ def execute(cmd, proto, addr):
     error = None
     subret = None
     try:
-        subret = subprocess.run(pcmd, stdout=subprocess.PIPE, check=True)
+        # Raspbian does not supply Python 3.5, which brings support for subprocess.run
+        # subret = subprocess.run(pcmd, stdout=subprocess.PIPE, check=True)
+        subret = subprocess.check_call(pcmd, stdout=subprocess.PIPE)
     except subprocess.CalledProcessError as e:
         error = 'Command %s exited with return code %s:\n           STDOUT: %s\n           STDERR: %s' % (lcmd, e.returncode, e.stdout, e.stderr)
     except FileNotFoundError as e:
